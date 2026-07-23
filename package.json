@@ -1,0 +1,14 @@
+{
+  "name": "pi-skillopt",
+  "version": "0.1.0",
+  "description": "Offline SkillOpt-style optimization for pi skills using saved sessions",
+  "keywords": ["pi-package"],
+  "license": "MIT",
+  "pi": {
+    "extensions": ["./extensions/skillopt.ts"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*"
+  }
+}
