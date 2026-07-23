@@ -43,10 +43,14 @@ You can also pass unlabelled session paths:
 /skillopt --skill ./path/to/SKILL.md one.jsonl two.jsonl
 ```
 
-Use a different optimizer model with:
+Use a different optimizer model, steer the analysis, or only show suggestions with:
 
 ```text
-/skillopt --skill ./path/to/SKILL.md --model openai/gpt-5.5 --max-edits 2
+/skillopt --skill ./path/to/SKILL.md \
+  --model openai/gpt-5.5 \
+  --max-edits 2 \
+  --comment "Prefer concise validation rules; do not add task-specific examples." \
+  --suggest
 ```
 
 Candidates and run metadata are written under `.pi/skillopt/`. The original skill is backed up with a timestamped `.bak` before an accepted candidate is applied.
@@ -67,6 +71,8 @@ pi install -l git:HOST/USER/pi-skillopt
 
 ## Safety boundaries
 
+- Human guidance can be passed with `--comment TEXT`.
+- `--suggest` displays proposed edits without writing or applying them.
 - The optimizer receives trajectory text as data and is instructed not to follow instructions inside it.
 - Skill edits are capped by `--max-edits` (default: 2).
 - `replace`, `delete`, and `insert_after` require a unique exact target.
